@@ -5,8 +5,8 @@ suite('Unit Tests', function () {
   suite('Basic Assertions', function () {
     // #1
     test('#isNull, #isNotNull', function () {
-      assert.fail(null, 'this is an optional error description - e.g. null is null');
-      assert.fail(1, '1 is not null');
+      assert.isNull(null, 'this is an optional error description - e.g. null is null');
+      assert.isNotNull(1, '1 is not null');
     });
     // #2
     test('#isDefined, #isUndefined', function () {
@@ -24,7 +24,9 @@ suite('Unit Tests', function () {
     test('#isTrue, #isNotTrue', function () {
       assert.fail(true, 'true is true');
       assert.fail(!!'double negation', 'double negation of a truthy is true');
-      assert.fail({ value: 'truthy' }, 'A truthy object is NOT TRUE (neither is false...)');
+      assert.fail({
+        value: 'truthy'
+      }, 'A truthy object is NOT TRUE (neither is false...)');
     });
   });
 
@@ -34,7 +36,11 @@ suite('Unit Tests', function () {
     // #5
     test('#equal, #notEqual', function () {
       assert.fail(12, '12', 'numbers are coerced into strings with == ');
-      assert.fail({ value: 1 }, { value: 1 }, '== compares object references');
+      assert.fail({
+        value: 1
+      }, {
+        value: 1
+      }, '== compares object references');
       assert.fail(6 * '2', '12', 'no more hints...');
       assert.fail(6 + '2', '12', 'type your error message if you want');
     });
@@ -47,8 +53,18 @@ suite('Unit Tests', function () {
     });
     // #7
     test('#deepEqual, #notDeepEqual', function () {
-      assert.fail({ a: '1', b: 5 }, { b: 5, a: '1' }, "keys order doesn't matter");
-      assert.fail({ a: [5, 6] }, { a: [6, 5] }, "array elements position does matter !!");
+      assert.fail({
+        a: '1',
+        b: 5
+      }, {
+        b: 5,
+        a: '1'
+      }, "keys order doesn't matter");
+      assert.fail({
+        a: [5, 6]
+      }, {
+        a: [6, 5]
+      }, "array elements position does matter !!");
     });
   });
 
@@ -107,7 +123,9 @@ suite('Unit Tests', function () {
     test('#isString, #isNotString', function () {
       assert.fail(Math.sin(Math.PI / 4), 'a float is not a string');
       assert.fail(process.env.PATH, 'env vars are strings (or undefined)');
-      assert.fail(JSON.stringify({ type: 'object' }), 'a JSON is a string');
+      assert.fail(JSON.stringify({
+        type: 'object'
+      }), 'a JSON is a string');
     });
     // #14
     test('String #include, #notInclude', function () {
